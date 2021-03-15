@@ -1,24 +1,48 @@
+import time
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup as Bs
+import json
 
-url = 'https://showroom.hyundai.ru/static/js/app.js'
+URL = 'https://showroom.hyundai.ru/rest/car'
 
 
 
-#soup = BeautifulSoup(full_page.content, 'html.parser')
+def send_telegram(text: str):
+    token = "1660802141:AAHedSPBsDHGnYCvh6bVOpnTKbxzAelk5xE"
+    url = "https://api.telegram.org/bot"
+    channel_id = "421965977"
+    url += token
+    method = url + "/sendMessage"
 
-headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
-                        'Chrome/89.0.4389.82 Safari/537.36'}
+    r = requests.post(method, data={
+         "chat_id": channel_id,
+         "text": text
+          })
 
-response = requests.get(url, headers=headers)
-soup = BeautifulSoup(response.content, 'html.parser')
+    if r.status_code != 200:
+        raise Exception("post_text error")
 
-print(soup)
+id = 0
+dva = 0
 
-#convert = soup.find ('div', class_ = '<text text-sm_2 dark-grey text-uppercase')
-#print(soup)
-#print(convert)
+while dva==0:
 
-#for eh in convert:
-#tlist = eh.find_all('div', attrs={'title':'Новая CRETA'})
+ soup = Bs(requests.get(URL).content, 'html.parser').text
+ dict1 = json.loads(soup)
+
+ for item in dict1['models']:
+    if item['car_id'] == 31:
+        print(item['modification_id'], "Цена = ", item['price'])
+        id += 1
+    if item['modification_id'] == 233 or item['modification_id'] == 234:
+        send_telegram("Двухлитровая Крета в продаже")
+        dva += 1
+
+ print()
+ print("Крет в продаже = ", id)
+ id=0
+ print()
+ time.sleep(10)
+
+
 
