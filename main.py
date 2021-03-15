@@ -32,10 +32,11 @@ while dva==0:
 
  for item in dict1['models']:
     if item['car_id'] == 31:
-        print(item['model_name'], item['modification_id'], "Цена = ", item['price'])
+        print(item['model_name'], item['modification_id'],"Комплектация", item['complectation_id'], "Цена = ", item['price'])
         id += 1
     if item['modification_id'] == 233 or item['modification_id'] == 234:
-        send_telegram("Двухлитровая Крета в продаже")
+        str1 = (item['model_name'] + " " + str(item['modification_id']) + " " + "Комплектация" + " " + str(item['complectation_id']) + " " + "Цена = " + str(item['price']))
+        send_telegram(str1)
         dva += 1
 
  print()
