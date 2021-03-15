@@ -61,7 +61,16 @@ dict2 = {668: 'Active',
 233: '2.0л 6AT 2WD, power: 149.6',
 234: '2.0л 6AT 4WD, power: 149.6',
 235: '1.6л 6MT 4WD',
-236: '1.6л 6AT 4WD'}
+236: '1.6л 6AT 4WD',
+11: 'Crystal White (PGU) "Белый"',
+17: 'Sleek Silver (RHM)" "Серебристый"',
+30: 'Urban Gray (U4G)" "Темно-серый"',
+102: 'Marina Blue (N4U)" "Синий"',
+195: 'Ice Wine (W4Y)" "Светло-серый"',
+103: 'Fiery Red (R4R)" "Красный"',
+121: 'Earth Brown (P4N) "Коричневый"',
+122: 'Phantom Black (MZH) "Черный"'
+}
 
 while dva==0:
 
@@ -70,10 +79,10 @@ while dva==0:
 
  for item in dict1['models']:
     if item['car_id'] == 31:
-        print(item['model_name'], dict2.get(item['modification_id']),"Комплектация", dict2.get(item['complectation_id']), "Цена = ", item['price'])
+        print(item['model_name'], dict2.get(item['modification_id']),"Комплектация", dict2.get(item['complectation_id']), "Цвет =", dict2.get(item['color_exterior_id']), "Цена = ", item['price'])
         id += 1
     if item['modification_id'] == 233 or item['modification_id'] == 234:
-        str1 = (item['model_name'] + " " + str(dict2.get(item['modification_id'])) + " " + "Комплектация" + " " + str(dict2.get(item['complectation_id'])) + " " + "Цена = " + str(item['price']))
+        str1 = (item['model_name'] + " " + str(dict2.get(item['modification_id'])) + " " + "Комплектация" + " " + str(dict2.get(item['complectation_id'])) + " Цвет = " + str(dict2.get(item['color_exterior_id'])) + " " + "Цена = " + str(item['price']))
         send_telegram(str1)
         dva += 1
 
