@@ -79,12 +79,12 @@ while dva==0:
 
  for item in dict1['models']:
     if item['car_id'] == 31:
-        print(item['model_name'], dict2.get(item['modification_id']),"Комплектация", dict2.get(item['complectation_id']), "Цвет =", dict2.get(item['color_exterior_id']), "Цена = ", item['price'])
+        print(item['model_name'], dict2.get(item['modification_id']), "Комплектация", dict2.get(item['complectation_id']), "Цвет =", dict2.get(item['color_exterior_id']), "Цена = ", item['price'])
         id += 1
     if item['modification_id'] == 233 or item['modification_id'] == 234:
         str1 = (item['model_name'] + " " + str(dict2.get(item['modification_id'])) + " " + "Комплектация" + " " + str(dict2.get(item['complectation_id'])) + " Цвет = " + str(dict2.get(item['color_exterior_id'])) + " " + "Цена = " + str(item['price']))
         send_telegram(str1)
-        dva += 1
+        #dva += 1
 
  print()
  print("Автомобилей в продаже = ", id)
