@@ -82,17 +82,17 @@ while dva == 0:
 
         if item['car_id'] == 31:
             car_url = "https://showroom.hyundai.ru/model/" + str(item['id'])
-            print(item['model_name'], dict2.get(item['modification_id']), "Комплектация",
-                  dict2.get(item['complectation_id']), "Цвет =", dict2.get(item['color_exterior_id']), "В наличии",
-                  item['count_available'], "шт.", "Цена = ", item['price'], "руб.", car_url)
+            print(item['model_name'], dict2.get(item['modification_id']),
+                  dict2.get(item['complectation_id']),  dict2.get(item['color_exterior_id']),
+                  item['count_available'], "шт.", item['price'], "руб.", car_url)
             id_check += 1
 
         if item['modification_id'] == 233 or item['modification_id'] == 234:
             car_url = "https://showroom.hyundai.ru/model/" + str(item['id'])
             out_2L = (
-                item['model_name'] + " " + str(dict2.get(item['modification_id'])) + " " + "Комплектация" + " " + str(
-                    dict2.get(item['complectation_id'])) + " Цвет = " + str(
-                    dict2.get(item['color_exterior_id'])) +" "+ "Цена = " + str(item['price']) + " руб. " + car_url )
+                item['model_name'] + " " + str(dict2.get(item['modification_id'])) + " " + " " + str(
+                    dict2.get(item['complectation_id'])) + str(
+                    dict2.get(item['color_exterior_id'])) + " " + str(item['price']) + " руб. " + car_url)
             send_telegram(out_2L)
             # dva += 1
 
