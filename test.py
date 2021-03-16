@@ -6,15 +6,20 @@ URL2 = 'https://showroom.hyundai.ru/rest/configurator/31/car-showroom'
 
 soup = Bs(requests.get(URL2).content, 'html.parser').text
 dict1 = json.loads(soup)
-new_dict = {}
 
 
-for item in dict1['complectations']:
-     print(dict1['complectations'].get(item).values())
+for key,value in dict1['complectations'].items():
+   for x,y in value.items():
+       print(x, ":" ,y)
 
-for item in dict1['modificationList']:
-    print(dict1['modificationList'].get(item).values())
 
+
+#for key,value in dict1['modificationList'].items():
+   # print (key, value)
+
+
+#for key,value in dict1['exterior'].items():
+  #  print(value)
 
 
 
